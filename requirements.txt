@@ -1,0 +1,6 @@
+
+tensorflow-gpu==1.14
+tensorflow_probability==0.7
+gym
+-e git://github.com/bulletphysics/bullet3.git#egg=pybullet
+

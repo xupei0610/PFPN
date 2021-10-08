@@ -1,12 +1,11 @@
 # Particle Filtering Policy Network (PFPN)
-This code is to support the paper _**Adaptive Discretization for Continuous Control using Particle Filtering Policy Network**_. In the paper, we propose PFPN as a replacement of the policy network with Gaussian policies to solve continuous control problems by adaptively discretizing action spaces. This is a general framework to deep reinforcement learning using policy gradient method and can be easily applied on current widely used on-policy and off-policy policy gradient methods.
+This code is to support the paper _**PFPN: Continuous Control of Physically Simulated Characters using Particle Filtering Policy Network**_. In the paper, we propose PFPN as a replacement of the policy network with Gaussian policies to solve continuous control problems by adaptively discretizing action spaces. This is a general framework to deep reinforcement learning using policy gradient method and can be easily applied on current widely used on-policy and off-policy policy gradient methods.
 
-PFPN show its advantage in high-dimensional, continuous control tasks, compared to Guassian policies and the fixed, uniform discretization scheme (DISCRETE).
+PFPN show its advantage in high-dimensional, continuous control tasks, espeically for physics-based character control problems, compared to Guassian policies and the fixed, uniform discretization scheme (DISCRETE).
 
-|PFPN-DPPO, 35 particles per action dimension | DISCRETE-DPPO, 200 atomic actions per dimension |
-|---------------------------------------------|-------------------------------------------------|
-|![DeepMimicWalk-PFPN-DPPO](./doc/deepmimic_walk_pfpn.gif) | ![DeepMimicWalk-DISCRETE-DPPO](./doc/deepmimic_walk_dis.gif) |
-
+This paper has been accepted by Motion, Interaction and Games (MIG '21).
+[[arXiv Paper Link](https://arxiv.org/abs/2003.06959)]
+[[Youtube Video Link](https://www.youtube.com/watch?v=YTtdnq0WpWo)]
 
 Here we provide the implementation of DPPO, A3C, IMPALA and SAC using PFPN. We also provide our implementation of DeepMimic tasks depending on Pybullet library through which the benchmark results shown in the paper can be reproduced.
 
@@ -32,21 +31,17 @@ Supported environments include Roboschool environments and our implemented DeepM
 
 For example, to reproduce the benchmark results of `DeepMimicWalk` task with DPPO and 35 particles per action dimension can run
 
-    bash benchmark.sh DeepMimicWalk-v0 deepmimic.deepmimic_dppo_par 35 1 --train
+    bash benchmark.sh DeepMimicWalk-v0 deepmimic.deepmimic_dppo_pfpn 35 1 --train
 
 The checkpoint file and log file will be stored at `ckpt_DeepMimicWalk-v0` and `log_DeepMimicWalk-v0` automatically. Use `--debug` option to show optimization information during training.
 
 To visualize the training result can run the above command without `--train` option, i.e.
 
-    bash benchmark.sh DeepMimicWalk-v0 deepmimic.deepmimic_dppo_par 35 1
+    bash benchmark.sh DeepMimicWalk-v0 deepmimic.deepmimic_dppo_pfpn 35 1
 
 
 All benchmark supported environments and the corresponding setting files are listed below.
 
 | Environment                   | Setting File                                    | # of Particles |
 |-------------------------------|-------------------------------------------------|----------------|
-| ReacherBulletEnv-v0           | roboschool.roboschool_{ppo/a2c/impala/sac}_pfpn | 10             |
-| HalfCheetahBulletEnv-v0       | roboschool.roboschool_{ppo/a2c/impala/sac}_pfpn | 10             |
-| AntBulletEnv-v0               | roboschool.roboschool_{ppo/a2c/impala/sac}_pfpn | 10             |
-| HumanoidBulletEnv-v0          | roboschool.roboschool_{dppo/a3c}_pfpn <br/> roboschool.roboschool_impala_humanoid_pfpn <br/> roboschool.roboschool_sac_async_pfpn        | 10             |
 | DeepMimic{Walk/Punch/Kick}-v0 | deepmimic.deepmimic_{dppo/a3c/impala/sac_async}_pfpn | 35        |    

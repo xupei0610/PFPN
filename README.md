@@ -3,7 +3,7 @@
 
 This code is to support the paper _**PFPN: Continuous Control of Physically Simulated Characters using Particle Filtering Policy Network**_. In the paper, we propose PFPN as a replacement of the policy network with Gaussian policies to solve continuous control problems by adaptively discretizing action spaces. This is a general framework to deep reinforcement learning using policy gradient method and can be easily applied on current widely used on-policy and off-policy policy gradient methods. PFPN show its advantage in high-dimensional, continuous control tasks, espeically for physics-based character control problems, compared to Guassian policies and the fixed, uniform discretization scheme (DISCRETE).
 
-This paper has been accepted by Motion, Interaction and Games (MIG '21).
+This paper has been accepted by *Motion, Interaction and Games* (MIG '21).
 [[arXiv](https://arxiv.org/abs/2003.06959)]
 [[Youtube](https://www.youtube.com/watch?v=YTtdnq0WpWo)]
 

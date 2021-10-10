@@ -4,8 +4,7 @@ import os, sys
 import gym
 import pybullet_envs
 
-from envs import deepmimic_envs
-from envs import multi_goal
+import envs
 
 import networks
 import models

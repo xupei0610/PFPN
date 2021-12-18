@@ -44,3 +44,13 @@ All benchmark supported environments and the corresponding setting files are lis
 | Environment                   | Setting File                                    | # of Particles |
 |-------------------------------|-------------------------------------------------|----------------|
 | DeepMimic{Walk/Punch/Kick}-v0 | deepmimic.deepmimic_{dppo/sac}_pfpn  | 35        |    
+
+
+## Pre-trained Models
+We provide three pre-trained models using DPPO in `ckpt_DeepMimicWalk-v0`, `ckpt_DeepMimicPunch-v0` and `ckpt_DeepMimicKick-v0` respectively.
+
+To run the pre-trained models using the following command:
+
+    bash benchmark.sh DeepMimicWalk-v0 deepmimic.deepmimic_dppo_pfpn 35 0
+    bash benchmark.sh DeepMimicPunch-v0 deepmimic.deepmimic_dppo_pfpn 35 0
+    bash benchmark.sh DeepMimicKick-v0 deepmimic.deepmimic_dppo_pfpn 35 0

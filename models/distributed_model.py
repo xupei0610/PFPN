@@ -239,7 +239,7 @@ class AbstractDistributedWorker(ABC):
         return self.env.reset()
 
     def after_episode(self, sess, info):
-        if self.is_evaluator:
+        if self.is_evaluator and hasattr(self, "total_samples"):
             self.evaluator_counter += 1
             if self.evaluator_counter >= self.is_evaluator:
                 self.episode_step /= self.evaluator_counter
@@ -249,17 +249,11 @@ class AbstractDistributedWorker(ABC):
                     tf.Summary.Value(tag="performance_test/reward_avg", simple_value=self.total_reward/self.episode_step),
                     tf.Summary.Value(tag="performance_test/frames", simple_value=self.episode_step)
                 ]
-                if hasattr(self, "total_samples"):
-                    summaries.append(tf.Summary.Value(tag="performance_test/samples", simple_value=self.total_samples))
-                    print("[PERFORM] Life Time: {}; Total Reward: {:.4f}; Avg Reward: {:.4f}; Step: {}; Samples: {}; {}".format(
-                        self.episode_step, self.total_reward, self.total_reward/self.episode_step, self.global_step, self.total_samples,
-                        time.strftime("%m-%d %H:%M:%S", time.localtime())
-                    ))
-                else:
-                    print("[PERFORM] Life Time: {}; Total Reward: {:.4f}; Avg Reward: {:.4f}; Step: {}; {}".format(
-                        self.episode_step, self.total_reward, self.total_reward/self.episode_step, self.global_step,
-                        time.strftime("%m-%d %H:%M:%S", time.localtime())
-                    ))
+                summaries.append(tf.Summary.Value(tag="performance_test/samples", simple_value=self.total_samples))
+                print("[PERFORM] Life Time: {}; Total Reward: {:.4f}; Avg Reward: {:.4f}; Step: {}; Samples: {}; {}".format(
+                    self.episode_step, self.total_reward, self.total_reward/self.episode_step, self.global_step, self.total_samples,
+                    time.strftime("%m-%d %H:%M:%S", time.localtime())
+                ))
                 self.summary = tf.Summary(value=summaries)
                 # self.request_stop = True
                 self.evaluator_counter = 0

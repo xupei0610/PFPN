@@ -3,7 +3,7 @@
 This code is to support the paper _**PFPN: Continuous Control of Physically Simulated Characters using Particle Filtering Policy Network**_. [[arXiv](https://arxiv.org/abs/2003.06959)]
 [[Youtube](https://www.youtube.com/watch?v=YTtdnq0WpWo)]
 
-This paper has been accepted by Motion, Interaction and Games (MIG '21).
+This paper has been accepted by *Motion, Interaction and Games* (MIG '21), also *NeurIPS 2021 Deep Reinforcement Learning workshop*.
 
 ![](doc/teaser.png)
 
@@ -54,3 +54,21 @@ To run the pre-trained models using the following command:
     bash benchmark.sh DeepMimicWalk-v0 deepmimic.deepmimic_dppo_pfpn 35 0
     bash benchmark.sh DeepMimicPunch-v0 deepmimic.deepmimic_dppo_pfpn 35 0
     bash benchmark.sh DeepMimicKick-v0 deepmimic.deepmimic_dppo_pfpn 35 0
+
+## Citation
+    @inproceedings{pfpn,
+        author = {Xu, Pei and Karamouzas, Ioannis},
+        title = {PFPN: Continuous Control of Physically Simulated Characters Using Particle Filtering Policy Network},
+        year = {2021},
+        isbn = {9781450391313},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        url = {https://doi.org/10.1145/3487983.3488301},
+        doi = {10.1145/3487983.3488301},
+        booktitle = {Motion, Interaction and Games},
+        articleno = {7},
+        numpages = {12},
+        keywords = {character animation, physics-based control, reinforcement learning},
+        location = {Virtual Event, Switzerland},
+        series = {MIG '21}
+    }
